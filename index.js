@@ -37,15 +37,22 @@ app.get('/api/persons', (req, res) => {
   res.json(persons)
 })
 
-app.get('/api/persons/:id', (request, response) => {
-  const id = Number(request.params.id)
+app.get('/api/persons/:id', (req, res) => {
+  const id = Number(req.params.id)
   const person = persons.find(person => person.id === id)
 
   if (person) {
-    response.json(person)
+    res.json(person)
   } else {
-    response.status(404).end()
+    res.status(404).end()
   }
+})
+
+app.delete('/api/persons/:id', (req, res) => {
+  const id = Number(req.params.id)
+  persons = persons.filter(person => person.id !== id)
+
+  res.status(204).end()
 })
 
 /*
@@ -56,11 +63,11 @@ const generateId = () => {
   return maxId + 1
 }
 
-app.post('/api/persons', (request, response) => {
-  const body = request.body
+app.post('/api/persons', (req, res) => {
+  const body = req.body
 
   if (!body.content) {
-    return response.status(400).json({ 
+    return res.status(400).json({ 
       error: 'content missing' 
     })
   }
@@ -74,16 +81,10 @@ app.post('/api/persons', (request, response) => {
 
   persons = persons.concat(person)
 
-  response.json(person)
-})
-
-app.delete('/api/persons/:id', (request, response) => {
-  const id = Number(request.params.id)
-  persons = persons.filter(person => person.id !== id)
-
-  response.status(204).end()
+  res.json(person)
 })
 */
+
 const PORT = 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
