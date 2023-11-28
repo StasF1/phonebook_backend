@@ -16,6 +16,9 @@
   },
   "author": "Stanislau Stasheuski",
   "license": "ISC",
+  "engines": {
+    "node": ">=20.8.0 <21.0.0"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
