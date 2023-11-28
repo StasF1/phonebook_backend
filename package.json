@@ -1,11 +1,12 @@
 {
   "name": "phonebook",
-  "version": "3.6.0",
+  "version": "3.7.0",
   "description": "phonebook",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rm -rf dist && npm run --prefix ../frontend build && mv ../frontend/dist .",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
@@ -27,6 +28,11 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "eslint": "^8.54.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "nodemon": "^3.0.1"
   }
 }
